@@ -1,0 +1,29 @@
+1/ sudo mysql 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.45-0ubuntu0.24.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+2/ CREATE DATABASE TP_SecuBDD_Menez_Chaveneau;
+Query OK, 1 row affected (0,01 sec)
+
+3/SHOW DATABASES;
++----------------------------+
+| Database                   |
++----------------------------+
+| TP_SecuBDD_Menez_Chaveneau |
+| information_schema         |
+| mysql                      |
+| performance_schema         |
+| sys                        |
++----------------------------+
+5 rows in set (0,01 sec
+
+4/ 
