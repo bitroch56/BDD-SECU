@@ -26,4 +26,20 @@ Query OK, 1 row affected (0,01 sec)
 +----------------------------+
 5 rows in set (0,01 sec
 
-4/ 
+4/ CREATE USER 'Chaveneau'@'localhost' IDENTIFIED  BY 'Virom';
+Query OK, 0 rows affected (0,01 sec)
+
+5/ GRANT All PRIVILEGES ON TP_SecuBDD_Menez_Chaveneau.* TO 'Chaveneau'@'localhost';
+Query OK, 0 rows affected (0,01 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0,01 sec)
+
+6/ SHOW GRANTS FOR 'Chaveneau'@'localhost';
++-----------------------------------------------------------------------------------+
+| Grants for Chaveneau@localhost                                                    |
++-----------------------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `Chaveneau`@`localhost`                                     |
+| GRANT ALL PRIVILEGES ON `TP_SecuBDD_Menez_Chaveneau`.* TO `Chaveneau`@`localhost` |
++-----------------------------------------------------------------------------------+
+2 rows in set (0,00 sec)
