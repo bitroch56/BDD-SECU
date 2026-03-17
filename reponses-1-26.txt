@@ -26,7 +26,7 @@ Query OK, 1 row affected (0,01 sec)
 +----------------------------+
 5 rows in set (0,01 sec
 
-4/ CREATE USER 'Chaveneau'@'localhost' IDENTIFIED  BY 'Virom';
+4/ CREATE USER 'Chaveneau'@'localhost' IDENTIFIED  BY 'password';
 Query OK, 0 rows affected (0,01 sec)
 
 5/ GRANT All PRIVILEGES ON TP_SecuBDD_Menez_Chaveneau.* TO 'Chaveneau'@'localhost';
