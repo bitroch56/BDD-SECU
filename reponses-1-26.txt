@@ -43,3 +43,276 @@ Query OK, 0 rows affected (0,01 sec)
 | GRANT ALL PRIVILEGES ON `TP_SecuBDD_Menez_Chaveneau`.* TO `Chaveneau`@`localhost` |
 +-----------------------------------------------------------------------------------+
 2 rows in set (0,00 sec)
+
+7/ SELECT Host, User, Authentication_string AS Password FROM mysql.user;
++-----------+------------------+------------------------------------------------------------------------+
+| Host      | User             | Password                                                               |
++-----------+------------------+------------------------------------------------------------------------+
+| localhost | Chaveneau        | $A$005$xqG) Zaz7!q|.
+                                                     (FLYozTCon1j5ztlO/8LUmwSqKK84DN5q7FrZMsdFBbNC1 |
+| localhost | debian-sys-maint | $A$005$%b8	@[-cY|7WtF&eoLAiUx9JxR/oJV5AAb0kpa8LMug86Y.x/lFIafo8E1 |
+| localhost | mysql.infoschema | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | mysql.session    | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | mysql.sys        | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | root             |                                                                        |
++-----------+------------------+------------------------------------------------------------------------+
+6 rows in set (0,00 sec)
+
+8/ HOW COLUMNS FROM mysql.user;
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+| Field                    | Type                              | Null | Key | Default               | Extra |
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+| Host                     | char(255)                         | NO   | PRI |                       |       |
+| User                     | char(32)                          | NO   | PRI |                       |       |
+| Select_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Insert_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Update_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Delete_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Drop_priv                | enum('N','Y')                     | NO   |     | N                     |       |
+| Reload_priv              | enum('N','Y')                     | NO   |     | N                     |       |
+| Shutdown_priv            | enum('N','Y')                     | NO   |     | N                     |       |
+| Process_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| File_priv                | enum('N','Y')                     | NO   |     | N                     |       |
+| Grant_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| References_priv          | enum('N','Y')                     | NO   |     | N                     |       |
+| Index_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Alter_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Show_db_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Super_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_tmp_table_priv    | enum('N','Y')                     | NO   |     | N                     |       |
+| Lock_tables_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Execute_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Repl_slave_priv          | enum('N','Y')                     | NO   |     | N                     |       |
+| Repl_client_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_view_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Show_view_priv           | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_routine_priv      | enum('N','Y')                     | NO   |     | N                     |       |
+| Alter_routine_priv       | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_user_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Event_priv               | enum('N','Y')                     | NO   |     | N                     |       |
+| Trigger_priv             | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_tablespace_priv   | enum('N','Y')                     | NO   |     | N                     |       |
+| ssl_type                 | enum('','ANY','X509','SPECIFIED') | NO   |     |                       |       |
+| ssl_cipher               | blob                              | NO   |     | NULL                  |       |
+| x509_issuer              | blob                              | NO   |     | NULL                  |       |
+| x509_subject             | blob                              | NO   |     | NULL                  |       |
+| max_questions            | int unsigned                      | NO   |     | 0                     |       |
+| max_updates              | int unsigned                      | NO   |     | 0                     |       |
+| max_connections          | int unsigned                      | NO   |     | 0                     |       |
+| max_user_connections     | int unsigned                      | NO   |     | 0                     |       |
+| plugin                   | char(64)                          | NO   |     | caching_sha2_password |       |
+| authentication_string    | text                              | YES  |     | NULL                  |       |
+| password_expired         | enum('N','Y')                     | NO   |     | N                     |       |
+| password_last_changed    | timestamp                         | YES  |     | NULL                  |       |
+| password_lifetime        | smallint unsigned                 | YES  |     | NULL                  |       |
+| account_locked           | enum('N','Y')                     | NO   |     | N                     |       |
+| Create_role_priv         | enum('N','Y')                     | NO   |     | N                     |       |
+| Drop_role_priv           | enum('N','Y')                     | NO   |     | N                     |       |
+| Password_reuse_history   | smallint unsigned                 | YES  |     | NULL                  |       |
+| Password_reuse_time      | smallint unsigned                 | YES  |     | NULL                  |       |
+| Password_require_current | enum('N','Y')                     | YES  |     | NULL                  |       |
+| User_attributes          | json                              | YES  |     | NULL                  |       |
++--------------------------+-----------------------------------+------+-----+-----------------------+-------+
+51 rows in set (0,04 sec)
+
+9/ SHOW TABLES FROM mysql;
++------------------------------------------------------+
+| Tables_in_mysql                                      |
++------------------------------------------------------+
+| columns_priv                                         |
+| component                                            |
+| db                                                   |
+| default_roles                                        |
+| engine_cost                                          |
+| func                                                 |
+| general_log                                          |
+| global_grants                                        |
+| gtid_executed                                        |
+| help_category                                        |
+| help_keyword                                         |
+| help_relation                                        |
+| help_topic                                           |
+| innodb_index_stats                                   |
+| innodb_table_stats                                   |
+| password_history                                     |
+| plugin                                               |
+| procs_priv                                           |
+| proxies_priv                                         |
+| replication_asynchronous_connection_failover         |
+| replication_asynchronous_connection_failover_managed |
+| replication_group_configuration_version              |
+| replication_group_member_actions                     |
+| role_edges                                           |
+| server_cost                                          |
+| servers                                              |
+| slave_master_info                                    |
+| slave_relay_log_info                                 |
+| slave_worker_info                                    |
+| slow_log                                             |
+| tables_priv                                          |
+| time_zone                                            |
+| time_zone_leap_second                                |
+| time_zone_name                                       |
+| time_zone_transition                                 |
+| time_zone_transition_type                            |
+| user                                                 |
++------------------------------------------------------+
+37 rows in set (0,01 sec)
+
+10/ SELECT VERSION(), NOW();
++-------------------------+---------------------+
+| VERSION()               | NOW()               |
++-------------------------+---------------------+
+| 8.0.45-0ubuntu0.24.04.1 | 2026-03-17 15:12:38 |
++-------------------------+---------------------+
+1 row in set (0,00 sec)
+
+11/ CREATE TABLE fournisseurs (code INT, nom CHAR);
+Query OK, 0 rows affected (0,06 sec)
+
+ALTER TABLE fournisseurs ADD prenom CHAR, ADD ref INT;
+Query OK, 0 rows affected (0,10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+DROP TABLE fournisseurs;
+Query OK, 0 rows affected (0,02 sec)
+
+12/ SELECT SIN(PI()/4) AS sin_pi_4, (4+1)*6 AS calcul;
++--------------------+--------+
+| sin_pi_4           | calcul |
++--------------------+--------+
+| 0.7071067811865475 |     30 |
++--------------------+--------+
+1 row in set (0,00 sec)
+
+13/ CREATE TABLE shop (article int(4) UNSIGNED ZEROFILL DEFAULT '0000' NOT NULL, dealer CHAR(20) DEFAULT '' NOT NULL, price DOUBLE(16,2) DEFAULT '0.00' NOT NULL,  PRIMARY KEY(article, dealer));
+Query OK, 0 rows affected, 3 warnings (0,04 sec)
+
+INSERT INTO shop VALUES (1, 'A', 3.45), (1,'B',3.99),(2,'A',10.99),(3,'B',1.45),(3,'C',1.69),(3,'D',1.25),(4,'D',19.95);
+Query OK, 7 rows affected (0,02 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+14/ SELECT article FROM shop;
++---------+
+| article |
++---------+
+|    0001 |
+|    0001 |
+|    0002 |
+|    0003 |
+|    0003 |
+|    0003 |
+|    0004 |
++---------+
+7 rows in set (0,00 sec)
+
+15/ CREATE USER 'customer'@'localhost' IDENTIFIED BY 'password';
+Query OK, 0 rows affected (0,03 sec)
+
+GRANT SELECT ON TP_SecuBDD_Menez_Chaveneau.shop TO 'customer'@'localhost';
+Query OK, 0 rows affected (0,00 sec)
+
+FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0,01 sec)
+
+mysql -u customer -p
+
+INSERT INTO shop VALUES (1,'A',3.45),(1,'B',3.99),(2,'A',10.99),(3,'B',1.45),(3,'C',1.69), (3,'D',1.25),(4,'D',19.95);
+ERROR 1142 (42000): INSERT command denied to user 'customer'@'localhost' for table 'shop'
+
+16/ SELECT MAX(article) AS article FROM shop;
++---------+
+| article |
++---------+
+|       4 |
++---------+
+1 row in set (0,03 sec)
+
+SELECT article, dealer, price FROM shop WHERE price=(SELECT MAX(price) FROM shop);
++---------+--------+-------+
+| article | dealer | price |
++---------+--------+-------+
+|    0004 | D      | 19.95 |
++---------+--------+-------+
+1 row in set (0,00 sec)
+
+SELECT article, MAX(price) AS price FROM shop GROUP BY article;
++---------+-------+
+| article | price |
++---------+-------+
+|    0001 |  3.99 |
+|    0002 | 10.99 |
+|    0003 |  1.69 |
+|    0004 | 19.95 |
++---------+-------+
+4 rows in set (0,00 sec)
+
+SELECT article, dealer, price FROM shop s1 WHERE price=(SELECT MAX(s2.price) FROM shop s2 WHERE s1.article = s2.article);
++---------+--------+-------+
+| article | dealer | price |
++---------+--------+-------+
+|    0001 | B      |  3.99 |
+|    0002 | A      | 10.99 |
+|    0003 | C      |  1.69 |
+|    0004 | D      | 19.95 |
++---------+--------+-------+
+4 rows in set (0,00 sec)
+
+17/ CREATE TABLE persons (
+    ->  id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    ->  name CHAR(60) NOT NULL,
+    ->  PRIMARY KEY (id)
+    ->  );
+Query OK, 0 rows affected (0,04 sec)
+
+CREATE TABLE shirts (
+    ->  id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    ->  style ENUM('t-shirt', 'polo', 'dress') NOT NULL,
+    ->  color ENUM('red', 'blue', 'orange', 'white', 'black') NOT NULL,
+    ->  owner SMALLINT UNSIGNED NOT NULL REFERENCES persons,
+    ->  PRIMARY KEY (id)
+    -> );
+Query OK, 0 rows affected (0,03 sec)
+
+INSERT INTO persons VALUES (NULL, 'Antonio Paz');
+Query OK, 1 row affected (0,01 sec)
+
+INSERT INTO shirts VALUES
+    ->  (NULL, 'polo', 'blue', LAST_INSERT_ID()),
+    ->  (NULL, 'dress', 'white', LAST_INSERT_ID()),
+    ->  (NULL, 't-shirt', 'blue', LAST_INSERT_ID());
+Query OK, 3 rows affected (0,04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+INSERT INTO persons VALUES (NULL, 'Lilliana Angelovska');
+Query OK, 1 row affected (0,00 sec)
+
+INSERT INTO persons VALUES (1, 'Laurent Marot');
+ERROR 1062 (23000): Duplicate entry '1' for key 'persons.PRIMARY'
+
+INSERT INTO shirts VALUES
+    ->  (NULL, 'dress', 'orange', LAST_INSERT_ID()),
+    ->  (NULL, 'polo', 'red', LAST_INSERT_ID()),
+    ->  (NULL, 'dress', 'blue', LAST_INSERT_ID()),
+    ->  (NULL, 't-shirt', 'white', LAST_INSERT_ID());
+Query OK, 4 rows affected (0,01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+SELECT s.* FROM persons p, shirts s
+    -> WHERE p.name LIKE 'Lilliana%'
+    -> AND s.owner = p.id
+    -> AND s.color <> 'white';
++----+-------+--------+-------+
+| id | style | color  | owner |
++----+-------+--------+-------+
+|  4 | dress | orange |     2 |
+|  5 | polo  | red    |     2 |
+|  6 | dress | blue   |     2 |
++----+-------+--------+-------+
+3 rows in set (0,00 sec)
+
+CREATE TABLE animaux (nom VARCHAR(20), proprietaire VARCHAR(20), espece VARCHAR(20), genre CHAR(1), naissance DATE, mort DATE);
+Query OK, 0 rows affected (0,06 sec)
+
+
