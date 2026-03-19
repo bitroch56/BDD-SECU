@@ -315,4 +315,94 @@ SELECT s.* FROM persons p, shirts s
 CREATE TABLE animaux (nom VARCHAR(20), proprietaire VARCHAR(20), espece VARCHAR(20), genre CHAR(1), naissance DATE, mort DATE);
 Query OK, 0 rows affected (0,06 sec)
 
+18/ question18.py
+
+19/ SELECT nom, mort, TIMESTAMPDIFF(YEAR, naissance, IFNULL(mort, CURDATE())) AS age FROM animaux;
++----------+------------+------+
+| nom      | mort       | age  |
++----------+------------+------+
+| Fluffy   | NULL       |   13 |
+| Claws    | NULL       |   12 |
+| Buffy    | NULL       |    6 |
+| Fang     | NULL       |   15 |
+| Bowser   | 2021-07-29 |    2 |
+| Chirpy   | NULL       |    7 |
+| Whistler | NULL       |    8 |
+| Slim     | NULL       |    9 |
+| Puffball | NULL       |    6 |
++----------+------------+------+
+9 rows in set (0,00 sec)
+
+20/ SELECT 1 IS NULL, 1 IS NOT NULL;
++-----------+---------------+
+| 1 IS NULL | 1 IS NOT NULL |
++-----------+---------------+
+|         0 |             1 |
++-----------+---------------+
+1 row in set (0,00 sec)
+
+La requête "SELECT 1 IS NULL, 1 IS NOT NULL;" test si une valeur est null ou non null. Dans ce cas, la valeur 1 n'est pas null mais bien non-null. Cela correspond bien au résultat dans le tableau.
+
+21/ SELECT nom FROM animaux WHERE nom REGEXP '[bP]';
++----------+
+| nom      |
++----------+
+| Buffy    |
+| Bowser   |
+| Chirpy   |
+| Puffball |
++----------+
+4 rows in set (0,03 sec)
+
+22/ ALTER USER 'Chaveneau'@'localhost' IDENTIFIED BY 'mysql';
+Query OK, 0 rows affected (0,04 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0,01 sec)
+
+23/ SELECT SHA2(nom, 256) AS nom_c, SHA2(proprietaire, 256) AS proprio_c, SHA2(espece, 256) AS espece_c, SHA2(genre, 256) AS genre_c, SHA2(naissance, 256) AS naissance_c, SHA2(mort, 256) AS mort_c FROM animaux;
++------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+
+| nom_c                                                            | proprio_c                                                        | espece_c                                                         | genre_c                                                          | naissance_c                                                      | mort_c                                                           |
++------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+
+| 66443efe6ecf5853e9fc80b2250986d9606b07f1d15b1a0a1d5bd1eeeed7a153 | 00b45a02087007c3841819dddebbb5e17e86dff13c1198eddbe3db9e509c12ea | 31e06f7d89feb99a0e6c0affe198748c3bb5bef5e3cc92d95cb9e996197d3fc3 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 6cf695b3cdfbc4ba398ba99e7cf85ab4064a7934e7868c9917f6bdcef5f5dcc7 | NULL                                                             |
+| 68a31aefb013bde5c9baadece2d532269c9f7a35699cb10f79136eca29938318 | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 31e06f7d89feb99a0e6c0affe198748c3bb5bef5e3cc92d95cb9e996197d3fc3 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | d7f62885efb459b616fb4ce95d520f6d9bb82bf311ceee271d7b6b506f1ddfb7 | NULL                                                             |
+| c3db5a427cc41caef31a1144717d6fc8fe40ac9de5f7e6fc04fa07703452cb6c | ccb8156d08385c3f091152b72638b25bcb55ec1a870b84dfc7ba69a3d031391c | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 62a823b76bf5c1d2fad1ac25ea203f4154223c07881d72ad5e7495916deffdbf | NULL                                                             |
+| f1e508c4582c09cd3b6eba95c91fea8be8d838414f21b66756b48caf956ac4c5 | 0fac6558250a33a0d87bc000fcac90b60c10b57c3400d8b39964dabe32e6090a | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | 92202034b7768464fddaef54493f00a965a8dcb8bc85650ab78b6dcaca57bf82 | NULL                                                             |
+| acbb1dfc1a03e909df40529005d30bdba791d76e32576d46d6ca0a5985d169c9 | 1b4e1e1b1c2e23399cdaa18d5f45c01b60778561ee85fe728d587ec4386c2698 | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | f61600f35e9a303ace388b2183e046ba641695dac52274441cdf0c0d9eddcdf1 | ccf739ec54301bcf04ba2d5a50a9dbece4c2495779cf3aabafca6af3f826628a |
+| eeb2f73dcf0ea52561b0e9bb0ddd246502889c6cb65cfb43d0ac9766a68fd754 | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 1fb96943919873472147b155300255723d0cda219501a81bca4ca0b97f66ab4c | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 41d2e2d19add3bc4547cea3ba9a37ad7f7866ff140b95b05a4b6ecbe3e668800 | NULL                                                             |
+| 51d96fa4a271b6ca13077763aedd8c4f501fcc5999a71f71d63a3b670743b4ea | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 1fb96943919873472147b155300255723d0cda219501a81bca4ca0b97f66ab4c | NULL                                                             | c5cdb33c6e92a5be4536c3060358b05122124b150d1e499589bf8154654f2337 | NULL                                                             |
+| ccdff1053cf65cda0ac7dd2d8e1647579ca47f67cada853fb097b3936b443df4 | 0fac6558250a33a0d87bc000fcac90b60c10b57c3400d8b39964dabe32e6090a | b6ef5d1ff0d73da95e3db1dc2d8183f97ee86f054eea14dab63f12c5fae5d5da | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | d327816fe8baae742196c31520c338edab4ee4fcf239cb61a1a8b4ae3812450c | NULL                                                             |
+| 1ecf10271bb6709df45e93d5120212d3e044fd4e1e5395156bf168e77c5f9703 | 1b4e1e1b1c2e23399cdaa18d5f45c01b60778561ee85fe728d587ec4386c2698 | 12e1d34b00a928b8cebb6a5f739f656b339c0e9d2f4507148a5b1afdadd634d0 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 5933836d597f243c5caa9ed92b23a53c28ba49f35b712b7afd0eb986f7fd6f19 | NULL                                                             |
+| 66443efe6ecf5853e9fc80b2250986d9606b07f1d15b1a0a1d5bd1eeeed7a153 | 00b45a02087007c3841819dddebbb5e17e86dff13c1198eddbe3db9e509c12ea | 31e06f7d89feb99a0e6c0affe198748c3bb5bef5e3cc92d95cb9e996197d3fc3 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 6cf695b3cdfbc4ba398ba99e7cf85ab4064a7934e7868c9917f6bdcef5f5dcc7 | NULL                                                             |
+| 68a31aefb013bde5c9baadece2d532269c9f7a35699cb10f79136eca29938318 | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 31e06f7d89feb99a0e6c0affe198748c3bb5bef5e3cc92d95cb9e996197d3fc3 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | d7f62885efb459b616fb4ce95d520f6d9bb82bf311ceee271d7b6b506f1ddfb7 | NULL                                                             |
+| c3db5a427cc41caef31a1144717d6fc8fe40ac9de5f7e6fc04fa07703452cb6c | ccb8156d08385c3f091152b72638b25bcb55ec1a870b84dfc7ba69a3d031391c | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 62a823b76bf5c1d2fad1ac25ea203f4154223c07881d72ad5e7495916deffdbf | NULL                                                             |
+| f1e508c4582c09cd3b6eba95c91fea8be8d838414f21b66756b48caf956ac4c5 | 0fac6558250a33a0d87bc000fcac90b60c10b57c3400d8b39964dabe32e6090a | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | 92202034b7768464fddaef54493f00a965a8dcb8bc85650ab78b6dcaca57bf82 | NULL                                                             |
+| acbb1dfc1a03e909df40529005d30bdba791d76e32576d46d6ca0a5985d169c9 | 1b4e1e1b1c2e23399cdaa18d5f45c01b60778561ee85fe728d587ec4386c2698 | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | f61600f35e9a303ace388b2183e046ba641695dac52274441cdf0c0d9eddcdf1 | ccf739ec54301bcf04ba2d5a50a9dbece4c2495779cf3aabafca6af3f826628a |
+| eeb2f73dcf0ea52561b0e9bb0ddd246502889c6cb65cfb43d0ac9766a68fd754 | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 1fb96943919873472147b155300255723d0cda219501a81bca4ca0b97f66ab4c | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 41d2e2d19add3bc4547cea3ba9a37ad7f7866ff140b95b05a4b6ecbe3e668800 | NULL                                                             |
+| 51d96fa4a271b6ca13077763aedd8c4f501fcc5999a71f71d63a3b670743b4ea | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 1fb96943919873472147b155300255723d0cda219501a81bca4ca0b97f66ab4c | NULL                                                             | c5cdb33c6e92a5be4536c3060358b05122124b150d1e499589bf8154654f2337 | NULL                                                             |
+| ccdff1053cf65cda0ac7dd2d8e1647579ca47f67cada853fb097b3936b443df4 | 0fac6558250a33a0d87bc000fcac90b60c10b57c3400d8b39964dabe32e6090a | b6ef5d1ff0d73da95e3db1dc2d8183f97ee86f054eea14dab63f12c5fae5d5da | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | d327816fe8baae742196c31520c338edab4ee4fcf239cb61a1a8b4ae3812450c | NULL                                                             |
+| 1ecf10271bb6709df45e93d5120212d3e044fd4e1e5395156bf168e77c5f9703 | 1b4e1e1b1c2e23399cdaa18d5f45c01b60778561ee85fe728d587ec4386c2698 | 12e1d34b00a928b8cebb6a5f739f656b339c0e9d2f4507148a5b1afdadd634d0 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 5933836d597f243c5caa9ed92b23a53c28ba49f35b712b7afd0eb986f7fd6f19 | NULL                                                             |
+| 66443efe6ecf5853e9fc80b2250986d9606b07f1d15b1a0a1d5bd1eeeed7a153 | 00b45a02087007c3841819dddebbb5e17e86dff13c1198eddbe3db9e509c12ea | 31e06f7d89feb99a0e6c0affe198748c3bb5bef5e3cc92d95cb9e996197d3fc3 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 6cf695b3cdfbc4ba398ba99e7cf85ab4064a7934e7868c9917f6bdcef5f5dcc7 | NULL                                                             |
+| 68a31aefb013bde5c9baadece2d532269c9f7a35699cb10f79136eca29938318 | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 31e06f7d89feb99a0e6c0affe198748c3bb5bef5e3cc92d95cb9e996197d3fc3 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | d7f62885efb459b616fb4ce95d520f6d9bb82bf311ceee271d7b6b506f1ddfb7 | NULL                                                             |
+| c3db5a427cc41caef31a1144717d6fc8fe40ac9de5f7e6fc04fa07703452cb6c | ccb8156d08385c3f091152b72638b25bcb55ec1a870b84dfc7ba69a3d031391c | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 62a823b76bf5c1d2fad1ac25ea203f4154223c07881d72ad5e7495916deffdbf | NULL                                                             |
+| f1e508c4582c09cd3b6eba95c91fea8be8d838414f21b66756b48caf956ac4c5 | 0fac6558250a33a0d87bc000fcac90b60c10b57c3400d8b39964dabe32e6090a | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | 92202034b7768464fddaef54493f00a965a8dcb8bc85650ab78b6dcaca57bf82 | NULL                                                             |
+| acbb1dfc1a03e909df40529005d30bdba791d76e32576d46d6ca0a5985d169c9 | 1b4e1e1b1c2e23399cdaa18d5f45c01b60778561ee85fe728d587ec4386c2698 | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | f61600f35e9a303ace388b2183e046ba641695dac52274441cdf0c0d9eddcdf1 | ccf739ec54301bcf04ba2d5a50a9dbece4c2495779cf3aabafca6af3f826628a |
+| eeb2f73dcf0ea52561b0e9bb0ddd246502889c6cb65cfb43d0ac9766a68fd754 | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 1fb96943919873472147b155300255723d0cda219501a81bca4ca0b97f66ab4c | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 41d2e2d19add3bc4547cea3ba9a37ad7f7866ff140b95b05a4b6ecbe3e668800 | NULL                                                             |
+| 51d96fa4a271b6ca13077763aedd8c4f501fcc5999a71f71d63a3b670743b4ea | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 1fb96943919873472147b155300255723d0cda219501a81bca4ca0b97f66ab4c | NULL                                                             | c5cdb33c6e92a5be4536c3060358b05122124b150d1e499589bf8154654f2337 | NULL                                                             |
+| ccdff1053cf65cda0ac7dd2d8e1647579ca47f67cada853fb097b3936b443df4 | 0fac6558250a33a0d87bc000fcac90b60c10b57c3400d8b39964dabe32e6090a | b6ef5d1ff0d73da95e3db1dc2d8183f97ee86f054eea14dab63f12c5fae5d5da | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | d327816fe8baae742196c31520c338edab4ee4fcf239cb61a1a8b4ae3812450c | NULL                                                             |
+| 1ecf10271bb6709df45e93d5120212d3e044fd4e1e5395156bf168e77c5f9703 | 1b4e1e1b1c2e23399cdaa18d5f45c01b60778561ee85fe728d587ec4386c2698 | 12e1d34b00a928b8cebb6a5f739f656b339c0e9d2f4507148a5b1afdadd634d0 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 5933836d597f243c5caa9ed92b23a53c28ba49f35b712b7afd0eb986f7fd6f19 | NULL                                                             |
+| 66443efe6ecf5853e9fc80b2250986d9606b07f1d15b1a0a1d5bd1eeeed7a153 | 00b45a02087007c3841819dddebbb5e17e86dff13c1198eddbe3db9e509c12ea | 31e06f7d89feb99a0e6c0affe198748c3bb5bef5e3cc92d95cb9e996197d3fc3 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 6cf695b3cdfbc4ba398ba99e7cf85ab4064a7934e7868c9917f6bdcef5f5dcc7 | NULL                                                             |
+| 68a31aefb013bde5c9baadece2d532269c9f7a35699cb10f79136eca29938318 | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 31e06f7d89feb99a0e6c0affe198748c3bb5bef5e3cc92d95cb9e996197d3fc3 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | d7f62885efb459b616fb4ce95d520f6d9bb82bf311ceee271d7b6b506f1ddfb7 | NULL                                                             |
+| c3db5a427cc41caef31a1144717d6fc8fe40ac9de5f7e6fc04fa07703452cb6c | ccb8156d08385c3f091152b72638b25bcb55ec1a870b84dfc7ba69a3d031391c | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 62a823b76bf5c1d2fad1ac25ea203f4154223c07881d72ad5e7495916deffdbf | NULL                                                             |
+| f1e508c4582c09cd3b6eba95c91fea8be8d838414f21b66756b48caf956ac4c5 | 0fac6558250a33a0d87bc000fcac90b60c10b57c3400d8b39964dabe32e6090a | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | 92202034b7768464fddaef54493f00a965a8dcb8bc85650ab78b6dcaca57bf82 | NULL                                                             |
+| acbb1dfc1a03e909df40529005d30bdba791d76e32576d46d6ca0a5985d169c9 | 1b4e1e1b1c2e23399cdaa18d5f45c01b60778561ee85fe728d587ec4386c2698 | f0a34945f0daa984f96b013de505a0c14d8375b01951a70d4fff2df79357c212 | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | f61600f35e9a303ace388b2183e046ba641695dac52274441cdf0c0d9eddcdf1 | ccf739ec54301bcf04ba2d5a50a9dbece4c2495779cf3aabafca6af3f826628a |
+| eeb2f73dcf0ea52561b0e9bb0ddd246502889c6cb65cfb43d0ac9766a68fd754 | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 1fb96943919873472147b155300255723d0cda219501a81bca4ca0b97f66ab4c | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 41d2e2d19add3bc4547cea3ba9a37ad7f7866ff140b95b05a4b6ecbe3e668800 | NULL                                                             |
+| 51d96fa4a271b6ca13077763aedd8c4f501fcc5999a71f71d63a3b670743b4ea | 0fded9fb37b9359e8e8ee8554f48acd12d762591738b1748db0e9231a0ff6588 | 1fb96943919873472147b155300255723d0cda219501a81bca4ca0b97f66ab4c | NULL                                                             | c5cdb33c6e92a5be4536c3060358b05122124b150d1e499589bf8154654f2337 | NULL                                                             |
+| ccdff1053cf65cda0ac7dd2d8e1647579ca47f67cada853fb097b3936b443df4 | 0fac6558250a33a0d87bc000fcac90b60c10b57c3400d8b39964dabe32e6090a | b6ef5d1ff0d73da95e3db1dc2d8183f97ee86f054eea14dab63f12c5fae5d5da | 62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a | d327816fe8baae742196c31520c338edab4ee4fcf239cb61a1a8b4ae3812450c | NULL                                                             |
+| 1ecf10271bb6709df45e93d5120212d3e044fd4e1e5395156bf168e77c5f9703 | 1b4e1e1b1c2e23399cdaa18d5f45c01b60778561ee85fe728d587ec4386c2698 | 12e1d34b00a928b8cebb6a5f739f656b339c0e9d2f4507148a5b1afdadd634d0 | 252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111 | 5933836d597f243c5caa9ed92b23a53c28ba49f35b712b7afd0eb986f7fd6f19 | NULL                                                             |
++------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------+
+36 rows in set (0,00 sec)
+
+24/ Il s'agit du script 'mysql_secure_installation'. Ce script permet de sécuriser l'installation d'un serveur de base de données, en proposant aux utilisateur de définir un mot de pase pour root, de supprimer les utilisateurs inconnus, d'interdire les connexions à distances pour root, de supprimer les bases de données par défauts et d'appliquer ces modifications immédiatement. 
+
 
