@@ -405,4 +405,8 @@ Query OK, 0 rows affected (0,01 sec)
 
 24/ Il s'agit du script 'mysql_secure_installation'. Ce script permet de sécuriser l'installation d'un serveur de base de données, en proposant aux utilisateur de définir un mot de pase pour root, de supprimer les utilisateurs inconnus, d'interdire les connexions à distances pour root, de supprimer les bases de données par défauts et d'appliquer ces modifications immédiatement. 
 
+25/ On peut chiffrer une cellule sensible avec la fonction AES_ENCRYPT() de MySQL, qui permet de stocker les données chiffrées. La lecture se fait avec AES_DECRYPT() en utilisant la même clé. Il est important de sécuriser la clé et d’utiliser un type binaire pour stocker les données. (à dev)
 
+26/ sudo mysqldump -u root -p --databases TP_SecuBDD_Menez_Chaveneau > dump.sql
+
+27/ En cours de dév
