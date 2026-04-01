@@ -408,5 +408,3 @@ Query OK, 0 rows affected (0,01 sec)
 25/ On peut chiffrer une cellule sensible avec la fonction AES_ENCRYPT() de MySQL, qui permet de stocker les données chiffrées. La lecture se fait avec AES_DECRYPT() en utilisant la même clé. Il est important de sécuriser la clé et d’utiliser un type binaire pour stocker les données. (à dev)
 
 26/ sudo mysqldump -u root -p --databases TP_SecuBDD_Menez_Chaveneau > dump.sql
-
-27/ En cours de dév
