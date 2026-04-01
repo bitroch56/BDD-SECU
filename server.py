@@ -4,10 +4,10 @@ import mysql.connector
 
 # Connexion à la base de données
 bdd = mysql.connector.connect(
-    host="localhost", 
-    user="Chaveneau", 
-    password="mysql", 
-    database="TP_SecuBDD_Menez_Chaveneau"
+    host="test", 
+    user="test", 
+    password="test", 
+    database="TP_SecuBDD"
 )
 curseur = bdd.cursor(buffered=True)
 
